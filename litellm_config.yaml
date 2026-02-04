@@ -1,0 +1,21 @@
+model_list:
+  - model_name: gpt-5.2
+    litellm_params:
+      model: openai/gpt-5.2
+      api_key: "os.environ/GPT_API_KEY"
+      api_base: "os.environ/GPT_API_BASE"
+
+  - model_name: deepseek-v3-2-251201
+    litellm_params:
+      model: volcengine/deepseek-v3-2-251201
+      api_key: "os.environ/DEEPSEEK_API_KEY"
+      thinking:
+        type: disabled
+
+litellm_settings:
+  # Following settings for anthropics models
+  # modify_params: true
+  # drop_params: true
+  callbacks: arbiteros_beta.litellm_callback.proxy_handler_instance
+  success_callback: ["mlflow"]
+  failure_callback: ["mlflow"]
