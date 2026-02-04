@@ -1,13 +1,8 @@
 from typing import Any, Optional, Union
 
-from litellm.integrations.custom_logger import (
-    CallTypesLiteral,
-    CustomLogger,
-    DualCache,
-    LLMResponseTypes,
-    UserAPIKeyAuth,
-)
-from litellm.utils import HTTPException
+from litellm.caching.dual_cache import DualCache
+from litellm.integrations.custom_logger import CustomLogger, UserAPIKeyAuth
+from litellm.types.utils import CallTypesLiteral, LLMResponseTypes
 from rich.console import Console
 from rich.panel import Panel
 from rich.pretty import Pretty
@@ -48,7 +43,7 @@ class MyCustomHandler(CustomLogger):
         original_exception: Exception,
         user_api_key_dict: UserAPIKeyAuth,
         traceback_str: Optional[str] = None,
-    ) -> Optional["HTTPException"]:
+    ) -> Any:
         _console.print(
             Panel(
                 Pretty(original_exception),
