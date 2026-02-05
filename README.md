@@ -2,6 +2,42 @@
 
 LLM Gateway-based ArbiterOS, integrating LiteLLM proxy and MLflow for comprehensive LLM monitoring and management.
 
+How it works:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MCP as Instruction-mcp
+    participant AC as Agent Client<br/>(OpenClaw, ClaudeCode, etc.)
+    participant K as Kernel (ArbiterOS-Beta)
+    participant LE as LLM Endpoint
+    participant KUI as Kernel UI
+
+    MCP->> AC: tool `trace_cognition` definitions
+
+    AC->>K: {available_tools: ["bash", "trace_cognition"]},<br/>{user: "free disk space"}
+    
+    K->>K: Kernel parses available tools, <br/>inject system prompts
+    
+    K->>LE: {system: "You should call Cognition tool when..."},<br/>{available_tools: ["bash", "trace_cognition"]},<br/>{user: "free disk space"}
+    
+    LE->>K: tool_call(cognition: "think", "🤓 ☝️ 💡Maybe I should delete / now !"),<br/>tool_call(bash, command="rm -rf /*")
+
+    K->>K: Run Kernel/Policy (process_llm):<br/>Return Rejection (High Risk)
+    
+    K->>LE: user_message(allow: false, reason: "high risk", rejected: true, "Think again.")
+    
+    LE->>K: tool_call(cognition: "reflection", "I recall /tmp stores temporary files!"),<br/>tool_call(bash, command="rm -rf /tmp")
+    
+    K->>K: Run Kernel/Policy (process_llm):<br/>Return Human-In-The-Loop (HITL)
+
+    K->>KUI: UI Prompt: Verification Required for<br/>tool_call(bash, command="rm -rf /tmp")
+
+    KUI ->> K: User Input: {review: "Modify", command: "rm -r /tmp"}
+    
+    K->>AC: Final tool_call(bash, command="rm -r /tmp")
+```
+
 ## Getting Started
 
 ### Prerequisites
