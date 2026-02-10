@@ -16,10 +16,11 @@ We define two primary roles within the interaction loop:
 ### 1. COGNITIVE (LLM itself, without tools)
 **Internal State: Logic, Decision Making, and Memory**
 
-* **Reasoning & Decision**
+* **Reasoning & Decision***
     * `REASON`: **Internal Reasoning.** Generating Chain-of-Thought (CoT), logical deduction, and hypothesis generation.
     * `PLAN`: **Task Decomposition.** Breaking down high-level goals into executable sub-tasks and ordering them.
     * `CRITIQUE`: **Self-Correction.** Analyzing past actions or errors to adjust future strategies (e.g., analyzing a stack trace).
+    * *: This can be related to agent's paradiam. For ReAct agents, only `REASON` is present. For Plan-and-execute agents, `PLAN` is added. For Reflexion agents, `CRITIQUE` is added...
 
 * **Memory Management**
     * `STORE`: **Persist Experience.** Saving successful patterns, code snippets, or user preferences to long-term storage.
