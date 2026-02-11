@@ -70,4 +70,6 @@ This is the most flexible layer. It involves using **Structured Outputs** or a s
 
 For example, in coding agent: `OS_type`, `kernel_version`, `HOME_DIR`, `SECRET_DIR`... (Some could be changed on the fly...?)
 
+For kernel implementation: add an api /post endpoint for collecting.
+
 [^1]: This is proposed in <https://arxiv.org/abs/2510.05156>
