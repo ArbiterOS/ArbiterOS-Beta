@@ -41,7 +41,7 @@ This layer captures the **intrinsic** characteristics of the action. These are d
 
 Please refer to the [Atomic Agent Actions](./atomic_actions.md) document for a detailed taxonomy of atomic actions.
 
-## 3. Semantic Metadata (User Metadata, The Payload Context)
+## 3. Semantic Metadata (Userdata, The Payload Context)
 
 This is the most flexible layer. It involves using **Structured Outputs** or a secondary **Policy Agent** to parse the raw content (`content_text`) and extract domain-specific key-value pairs[^1].
 
@@ -65,5 +65,9 @@ This is the most flexible layer. It involves using **Structured Outputs** or a s
 * **System States:**
 * `error_type`: "RateLimitExceeded"
 * `referenced_files`: ["logs.txt", "config.json"]
+
+## 4. Environmental Metadata
+
+For example, in coding agent: `OS_type`, `kernel_version`, `HOME_DIR`, `SECRET_DIR`... (Some could be changed on the fly...?)
 
 [^1]: This is proposed in <https://arxiv.org/abs/2510.05156>
