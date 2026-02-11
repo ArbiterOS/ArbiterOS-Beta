@@ -13,7 +13,7 @@ We define two primary roles within the interaction loop:
 
 ## Types of Atomic Actions
 
-### 1. COGNITIVE (LLM itself, without tools)
+### 1. COGNITIVE (LLM itself, without interaction with environment)
 **Internal State: Logic, Decision Making, and Memory**
 
 * **Reasoning & Decision**[^1]
