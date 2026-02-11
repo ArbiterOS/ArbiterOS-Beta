@@ -39,7 +39,7 @@ We define two primary roles within the interaction loop:
     * `ASK`: **Human-in-the-Loop.** Requesting user confirmation before executing critical actions (e.g., `Do you agree with current coding plan?`).
     * `RESPOND`: **Final Output.** Providing the final answer or result to the user after processing (e.g., `Here is the solution to your coding problem.`).
 * **Agent Collaboration**
-    * `HANDOFF`[^2]: **Inter-Agent Delegation.** Delegating to another specialized agent.
+    * `DELEGATE`[^2]: **Inter-Agent Delegation.** Delegating to another specialized agent.
 
 ### 3. PASSIVE ENV (environment as an actor)
 **Perception: Reactive Handling of Environmental Events**
