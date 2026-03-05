@@ -25,7 +25,7 @@ sequenceDiagram
 
     K->>K: Run Kernel/Policy (process_llm):<br/>Return Rejection (High Risk)
     
-    K->>LE: user_message(allow: false, reason: "high risk", rejected: true, "Think again.")
+    K->>LE: tool_message(allow: false, reason: "high risk", rejected: true, "Think again.")
     
     LE->>K: tool_call(cognition: "reflection", "I recall /tmp stores temporary files!"),<br/>tool_call(bash, command="rm -rf /tmp")
     
